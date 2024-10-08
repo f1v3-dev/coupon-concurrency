@@ -3,6 +3,8 @@ package com.f1v3.coupon.repository;
 import com.f1v3.coupon.domain.Coupon;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 /**
  * Coupon JPA Repository.
  *
@@ -10,4 +12,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @version 2024. 10. 07.
  */
 public interface CouponRepository extends JpaRepository<Coupon, Long> {
+
+    Optional<Coupon> findByUserId(Long userId);
 }

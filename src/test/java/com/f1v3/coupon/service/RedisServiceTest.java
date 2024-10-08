@@ -1,9 +1,8 @@
 package com.f1v3.coupon.service;
 
-import com.f1v3.coupon.domain.Coupon;
 import com.f1v3.coupon.repository.CouponRepository;
 import com.f1v3.coupon.repository.RedisCouponRepository;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ class RedisServiceTest {
     @Autowired
     RedisCouponRepository redisCouponRepository;
 
-    @BeforeEach
+    @AfterEach
     public void after() {
         redisCouponRepository.reset();
     }
