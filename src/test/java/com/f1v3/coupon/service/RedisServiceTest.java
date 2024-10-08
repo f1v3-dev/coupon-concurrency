@@ -1,6 +1,9 @@
 package com.f1v3.coupon.service;
 
+import com.f1v3.coupon.domain.Coupon;
 import com.f1v3.coupon.repository.CouponRepository;
+import com.f1v3.coupon.repository.RedisCouponRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,14 @@ class RedisServiceTest {
 
     @Autowired
     CouponRepository couponRepository;
+
+    @Autowired
+    RedisCouponRepository redisCouponRepository;
+
+    @BeforeEach
+    public void after() {
+        redisCouponRepository.reset();
+    }
 
     @Test
     @DisplayName("여러명이 동시에 쿠폰 발급 요청")
