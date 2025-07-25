@@ -1,8 +1,7 @@
 package com.f1v3.coupon.service;
 
-import com.f1v3.coupon.domain.Coupon;
+import com.f1v3.coupon.producer.CouponCreateProducer;
 import com.f1v3.coupon.repository.CouponCountRepository;
-import com.f1v3.coupon.repository.CouponRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +14,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ApplyService {
 
-    private final CouponRepository couponRepository;
     private final CouponCountRepository couponCountRepository;
-
+    private final CouponCreateProducer couponCreateProducer;
 
     /**
      * 쿠폰 발급 로직
@@ -31,7 +29,6 @@ public class ApplyService {
             return;
         }
 
-        Coupon coupon = new Coupon(userId);
-        couponRepository.save(coupon);
+        couponCreateProducer.create(userId);
     }
 }
