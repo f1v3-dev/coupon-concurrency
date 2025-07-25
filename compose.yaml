@@ -1,5 +1,6 @@
 services:
   redis:
+    container_name: coupon-redis
     image: redis:7-alpine
     ports:
       - "6379:6379"
@@ -8,6 +9,7 @@ services:
       - redis_data:/data
 
   mysql:
+    container_name: coupon-mysql
     image: mysql:8.0
     ports:
       - "3306:3306"
@@ -20,13 +22,13 @@ services:
 
   zookeeper:
     image: wurstmeister/zookeeper
-    container_name: zookeeper
+    container_name: coupon-zookeeper
     ports:
       - "2181:2181"
 
   kafka:
     image: wurstmeister/kafka:2.12-2.5.0
-    container_name: kafka
+    container_name: coupon-kafka
     ports:
         - "9092:9092"
     environment:
